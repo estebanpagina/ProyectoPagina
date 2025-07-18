@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>contenido tic</title>
+  <style>
+    @font-face {
+      font-family: 'spritegraffiti';
+      src: url('spritegraffiti.otf') format('opentype');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: arial, sans-serif;
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    #video-fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #e74c3c;
+      font-family: 'spritegraffiti', cursive;
+      margin: 60px 0 30px;
+      text-transform: uppercase;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .logos img {
+      width: 120px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border-radius: 12px;
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+    }
+
+    .logos img:hover {
+      transform: scale(1.1);
+    }
+
+    .cuadro-explicativo {
+      display: none;
+      max-width: 880px;
+      margin: 0 auto 40px;
+      background-color: #34495e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+      text-align: left;
+      animation: aparecer 0.5s ease-in-out;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .cuadro-explicativo h2 {
+      color: #1abc9c;
+      font-size: 26px;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+
+    .cuadro-explicativo p, .cuadro-explicativo li {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ecf0f1;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .video-youtube {
+      margin: 0 auto 60px;
+      max-width: 880px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    }
+
+    .video-youtube iframe {
+      width: 100%;
+      height: 480px;
+      border: none;
+    }
+
+    .volver {
+      display: inline-block;
+      margin: 40px auto;
+      padding: 14px 28px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ecf0f1;
+      background-color: #e74c3c;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .volver:hover {
+      background-color: #2980b9;
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="video-fondo">
+    <source src="videofondopag3.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <h1>contenido tic</h1>
+
+  <div class="logos">
+    <img src="logoword.png" alt="Word" onclick="mostrarTexto('word')">
+    <img src="logoexcel.png" alt="Excel" onclick="mostrarTexto('excel')">
+    <img src="logoaccess.png" alt="Access" onclick="mostrarTexto('access')">
+    <img src="logohtml.png" alt="HTML" onclick="mostrarTexto('html')">
+  </div>
+
+  <div id="contenedor-texto" class="cuadro-explicativo"></div>
+
+  <div class="video-youtube">
+    <iframe src="https://www.youtube.com/embed/bsspDMRvgz0?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <a class="volver" href="index.html">← volver al inicio</a>
+
+  <script>
+    const textos = {
+      word: `
+        <h2>microsoft word – procesador de textos</h2>
+        <p>Microsoft Word permite crear y editar documentos profesionales. Se usa para redactar cartas, informes, certificados, presentaciones escritas, entre otros.</p>
+        <ul>
+          <li>Ctrl+C: Copiar</li>
+          <li>Ctrl+X: Cortar</li>
+          <li>Ctrl+V: Pegar</li>
+          <li>Ctrl+S: Guardar</li>
+          <li>Ctrl+T: Negrita</li>
+          <li>Ctrl+J: Justificar texto</li>
+        </ul>
+        <p><strong>Combinación de correspondencia:</strong> Permite personalizar documentos combinando un documento base con una lista de datos.</p>
+        <p><strong>Tabla de contenido:</strong> Organiza títulos y subtítulos con sus páginas.</p>
+      `,
+      excel: `
+        <h2>microsoft excel – hoja de cálculo</h2>
+        <p>Excel permite organizar datos numéricos y hacer cálculos financieros y estadísticos.</p>
+        <ul>
+          <li>Fórmulas abiertas: =100+200</li>
+          <li>Fórmulas cerradas: =A2+B2</li>
+          <li>Mixtas: =(A2+200)</li>
+          <li>Porcentajes: =valor*0.10</li>
+        </ul>
+        <p>Funciones útiles: SUMA, MAX, MIN, CONTAR, SUMAR.SI, SI, BUSCARV</p>
+        <p>Herramientas: formato condicional, listas desplegables, macros, protección de celdas.</p>
+      `,
+      access: `
+        <h2>microsoft access – base de datos</h2>
+        <p>Access permite crear y gestionar bases de datos.</p>
+        <ul>
+          <li>Tablas para almacenar datos</li>
+          <li>Formularios para ingresar datos</li>
+          <li>Consultas para filtrar y buscar</li>
+          <li>Informes para presentar resultados</li>
+        </ul>
+        <p>Usos comunes: inventarios, clientes, ventas. Se puede proteger con contraseñas.</p>
+      `,
+      html: `
+        <h2>¿qué es html?</h2>
+        <p>HTML es el lenguaje para estructurar páginas web. Permite insertar texto, imágenes, videos, enlaces y formularios. Es fundamental en el desarrollo web y complementa otras herramientas TIC.</p>
+      `
+    };
+
+    let temaActual = null;
+
+    function mostrarTexto(tema) {
+      const contenedor = document.getElementById("contenedor-texto");
+
+      if (temaActual === tema) {
+        contenedor.style.display = "none";
+        contenedor.innerHTML = "";
+        temaActual = null;
+      } else {
+        contenedor.innerHTML = textos[tema];
+        contenedor.style.display = "block";
+        contenedor.scrollIntoView({ behavior: "smooth" });
+        temaActual = tema;
+      }
+    }
+  </script>
+</body>
+</html>

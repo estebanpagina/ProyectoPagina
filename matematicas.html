@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>matemáticas</title>
+  <style>
+    @font-face {
+      font-family: 'spritegraffiti';
+      src: url('spritegraffiti.otf') format('opentype');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: arial, sans-serif;
+      background-color: #000;
+      color: #ecf0f1;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    #video-fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #e84393;
+      font-family: 'spritegraffiti', cursive;
+      margin: 60px 0 30px;
+      text-transform: uppercase;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .logos img {
+      width: 120px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border-radius: 12px;
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+    }
+
+    .logos img:hover {
+      transform: scale(1.1);
+    }
+
+    .cuadro-explicativo {
+      display: none;
+      max-width: 880px;
+      margin: 0 auto 40px;
+      background-color: #1e272e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+      text-align: left;
+      animation: aparecer 0.5s ease-in-out;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .cuadro-explicativo h2 {
+      color: #00b894;
+      font-size: 26px;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+
+    .cuadro-explicativo p, .cuadro-explicativo li {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ecf0f1;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .volver {
+      display: inline-block;
+      margin: 40px auto;
+      padding: 14px 28px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
+      background-color: #ff7675;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .volver:hover {
+      background-color: #0984e3;
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="video-fondo">
+    <source src="videofondopag4.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <h1>temas principales desarrollados</h1>
+
+  <div class="logos">
+    <img src="conversiones.png" alt="Conversiones" onclick="mostrarTexto('conversiones')">
+    <img src="porcentajes.png" alt="Porcentajes" onclick="mostrarTexto('porcentajes')">
+    <img src="fracciones.png" alt="Fracciones" onclick="mostrarTexto('fracciones')">
+    <img src="binario.png" alt="Binario" onclick="mostrarTexto('binario')">
+    <img src="ecuaciones.png" alt="Ecuaciones" onclick="mostrarTexto('ecuaciones')">
+  </div>
+
+  <div id="contenedor-texto" class="cuadro-explicativo"></div>
+
+  <a class="volver" href="index.html">← volver al inicio</a>
+
+  <script>
+    const textos = {
+      conversiones: `
+        <h2>conversiones de unidades</h2>
+        <p>La conversión de unidades permite transformar una cantidad expresada en una unidad a otra unidad del mismo tipo.</p>
+        <p><strong>Aplicaciones en TIC:</strong></p>
+        <ul>
+          <li>Longitud: km, m, cm, mm</li>
+          <li>Almacenamiento: 1 KB = 1024 Bytes, 1 MB = 1024 KB, 1 GB = 1024 MB, 1 TB = 1024 GB</li>
+          <li>Velocidad: 1 Hz = 1 ciclo/s, 1 KHz = 1000 Hz, 1 MHz = 1.000.000 Hz, 1 GHz = 1.000.000.000 Hz</li>
+        </ul>
+        <p><strong>Ejemplo:</strong> 5 km = 5000 m</p>
+      `,
+      porcentajes: `
+        <h2>porcentajes</h2>
+        <p>El porcentaje representa una parte de cien. Se usa para expresar proporciones y comparar cantidades fácilmente.</p>
+        <p><strong>Aplicaciones en TIC:</strong></p>
+        <ul>
+          <li>Espacio usado en disco</li>
+          <li>Descuentos en servicios</li>
+          <li>Rendimiento de redes</li>
+        </ul>
+        <p><strong>Fórmulas:</strong></p>
+        <ul>
+          <li>(Valor × %)/100</li>
+          <li>Valor × (1 + %/100)</li>
+          <li>Valor × (1 - %/100)</li>
+        </ul>
+        <p><strong>Ejemplo:</strong> 25% de 1024 GB = 256 GB</p>
+      `,
+      fracciones: `
+        <h2>fracciones</h2>
+        <p>Una fracción representa una parte de un todo. Está formada por numerador y denominador.</p>
+        <p><strong>Operaciones:</strong></p>
+        <ul>
+          <li>Suma/resta con mismo denominador</li>
+          <li>Suma/resta con diferente denominador (mcm)</li>
+          <li>Multiplicación: num × num, den × den</li>
+          <li>División: multiplicar por el inverso</li>
+        </ul>
+        <p><strong>Ejemplo:</strong> ½ + ⅓ = 5/6</p>
+      `,
+      binario: `
+        <h2>sistema binario</h2>
+        <p>Es un sistema numérico que usa solo dos dígitos: 0 y 1. Es la base de todos los dispositivos digitales.</p>
+        <p><strong>Aplicaciones en TIC:</strong></p>
+        <ul>
+          <li>Lectura de instrucciones</li>
+          <li>Codificación de datos</li>
+          <li>Encendido (1) y apagado (0)</li>
+        </ul>
+        <p><strong>Ejemplo:</strong> 5 en binario = 101</p>
+      `,
+      ecuaciones: `
+        <h2>sistemas de ecuaciones lineales</h2>
+        <p>Son un conjunto de ecuaciones con varias incógnitas que se deben resolver simultáneamente.</p>
+        <p><strong>Métodos:</strong></p>
+        <ul>
+          <li>Sustitución</li>
+          <li>Igualación</li>
+          <li>Método de Cramer (matrices)</li>
+        </ul>
+        <p><strong>Aplicaciones en TIC:</strong> redes, consumo eléctrico, costos compartidos</p>
+        <p><strong>Ejemplo:</strong><br> 2x - y = 5<br> x + 4y = 7 → x = 3, y = 1</p>
+      `
+    };
+
+    let temaActual = null;
+
+    function mostrarTexto(tema) {
+      const contenedor = document.getElementById("contenedor-texto");
+
+      if (temaActual === tema) {
+        contenedor.style.display = "none";
+        contenedor.innerHTML = "";
+        temaActual = null;
+      } else {
+        contenedor.innerHTML = textos[tema];
+        contenedor.style.display = "block";
+        contenedor.scrollIntoView({ behavior: "smooth" });
+        temaActual = tema;
+      }
+    }
+
+  </script>
+</body>
+</html>
+``

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>contenido académico</title>
+  <style>
+    @font-face {
+      font-family: 'spritegraffiti';
+      src: url('spritegraffiti.otf') format('opentype');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: arial, sans-serif;
+      background-color: #000;
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    #video-fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .seccion-educativa {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .encabezado h1 {
+      font-size: 48px;
+      color: #00bcd4;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      font-family: 'spritegraffiti', cursive;
+    }
+
+    .encabezado p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      color: #f5f5f5;
+    }
+
+    .bloques-temas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      padding: 0 10px;
+    }
+
+    .bloque {
+      background-color: #212121;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .bloque:hover {
+      transform: translateY(-5px);
+    }
+
+    .bloque h2 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .bloque p {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #f5f5f5;
+    }
+
+    .bloque a {
+      color: #a3e635;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .bloque a:hover {
+      color: #1e88e5;
+      text-decoration: underline;
+    }
+
+    /* Colores únicos por bloque */
+    .induccion h2   { color: #4fc3f7; }
+    .tic h2         { color: #81c784; }
+    .matematicas h2 { color: #ba68c8; }
+    .fisica h2      { color: #ef5350; }
+    .opinion h2     { color: #ffca28; }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="video-fondo">
+    <source src="videofondopag1.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <section class="seccion-educativa">
+    <header class="encabezado">
+      <h1>CONTENIDO ACADÉMICO</h1>
+      <p>Explora los temas claves del curso interactivo</p>
+    </header>
+
+    <div class="bloques-temas">
+      <article class="bloque induccion">
+        <h2>INDUCCIÓN</h2>
+        <p>Guías, recursos iniciales y fundamentos del proceso formativo.</p>
+        <a href="induccion.html">Más información →</a>
+      </article>
+
+      <article class="bloque tic">
+        <h2>TIC</h2>
+        <p>Competencias digitales esenciales para el entorno laboral moderno.</p>
+        <a href="tic.html">Más información →</a>
+      </article>
+
+      <article class="bloque matematicas">
+        <h2>MATEMÁTICAS</h2>
+        <p>Ejercicios, teoría y herramientas para dominar cálculos básicos.</p>
+        <a href="matematicas.html">Más información →</a>
+      </article>
+
+      <article class="bloque fisica">
+        <h2>FÍSICA</h2>
+        <p>Conoce leyes del movimiento, energía y principios fundamentales.</p>
+        <a href="fisica.html">Más información →</a>
+      </article>
+
+      <article class="bloque opinion">
+        <h2>OPINIÓN DE LA PÁGINA</h2>
+        <p>Comparte tu experiencia, sugerencias o comentarios sobre el contenido académico.</p>
+        <a href="opinion.html">Dejar opinión →</a>
+      </article>
+    </div>
+  </section>
+</body>
+</html>

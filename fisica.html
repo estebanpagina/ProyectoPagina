@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>física</title>
+  <style>
+    @font-face {
+      font-family: 'spritegraffiti';
+      src: url('spritegraffiti.otf') format('opentype');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: arial, sans-serif;
+      background-color: #2d3436;
+      color: #f5f6fa;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    #fondo-imagen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('videofondopag5.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #ff6b6b;
+      font-family: 'spritegraffiti', cursive;
+      margin: 60px 0 30px;
+      text-transform: uppercase;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .logos img {
+      width: 120px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border-radius: 12px;
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+    }
+
+    .logos img:hover {
+      transform: scale(1.1);
+    }
+
+    .cuadro-explicativo {
+      display: none;
+      max-width: 880px;
+      margin: 0 auto 40px;
+      background-color: #2d3436;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 16px rgba(255, 107, 107, 0.6);
+      text-align: left;
+      animation: aparecer 0.5s ease-in-out;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .cuadro-explicativo h2 {
+      color: #f9ca24;
+      font-size: 26px;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+
+    .cuadro-explicativo p, .cuadro-explicativo li {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #f5f6fa;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 0 12px #ff7675;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ff7675;
+      text-align: left;
+    }
+
+    th {
+      background-color: #ff6b6b;
+      color: #fff;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .volver {
+      display: inline-block;
+      margin: 40px auto;
+      padding: 14px 28px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #ff6b6b;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .volver:hover {
+      background-color: #0984e3;
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="fondo-imagen"></div>
+
+  <h1>temas principales de física</h1>
+
+  <div class="logos">
+    <img src="mru.png" alt="MRU" onclick="mostrarTexto('mru')">
+    <img src="mrua.png" alt="MRUA" onclick="mostrarTexto('mrua')">
+    <img src="ohm.png" alt="Ley de Ohm" onclick="mostrarTexto('ohm')">
+    <img src="newton.png" alt="Leyes de Newton" onclick="mostrarTexto('newton')">
+  </div>
+
+  <div id="contenedor-texto" class="cuadro-explicativo"></div>
+
+  <a class="volver" href="index.html">← volver al inicio</a>
+
+  <script>
+    const textos = {
+     mru: `
+  <h2>movimiento rectilíneo uniforme (mru)</h2>
+  <p>Es un movimiento en línea recta con velocidad constante. La aceleración es nula.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fórmula</th>
+        <th>Significado</th>
+        <th>Unidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>d = v · t</td>
+        <td>Distancia recorrida</td>
+        <td>m</td>
+      </tr>
+      <tr>
+        <td>v = d / t</td>
+        <td>Velocidad</td>
+        <td>m/s</td>
+      </tr>
+      <tr>
+        <td>t = d / v</td>
+        <td>Tiempo</td>
+        <td>s</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Variables:</strong></p>
+  <ul>
+    <li><strong>d:</strong> Distancia</li>
+    <li><strong>v:</strong> Velocidad</li>
+    <li><strong>t:</strong> Tiempo</li>
+  </ul>
+
+  <p><strong>Ejemplo:</strong> Un tren recorre 400 km en 2 horas → v = 400 / 2 = 200 km/h</p>
+  <p><strong>Ejercicio:</strong> Si recorres 50 km a 100 km/h, ¿cuánto tiempo tardas? → t = 50 / 100 = 0.5 h</p>
+`,
+      mrua: `
+  <h2>movimiento rectilíneo uniformemente acelerado (mrua)</h2>
+  <p>Es el movimiento en línea recta con aceleración constante. La velocidad cambia de forma uniforme respecto al tiempo.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fórmula</th>
+        <th>Significado</th>
+        <th>Unidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>a = (vf - vi) / t</td>
+        <td>Aceleración</td>
+        <td>m/s²</td>
+      </tr>
+      <tr>
+        <td>vf = vi + a · t</td>
+        <td>Velocidad final</td>
+        <td>m/s</td>
+      </tr>
+      <tr>
+        <td>x = vi · t + ½ · a · t²</td>
+        <td>Distancia recorrida</td>
+        <td>m</td>
+      </tr>
+      <tr>
+        <td>2 · a · x = vf² - vi²</td>
+        <td>Relación entre velocidad y distancia</td>
+        <td>m/s², m</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Variables:</strong></p>
+  <ul>
+    <li><strong>a:</strong> Aceleración</li>
+    <li><strong>vf:</strong> Velocidad final</li>
+    <li><strong>vi:</strong> Velocidad inicial</li>
+    <li><strong>t:</strong> Tiempo</li>
+    <li><strong>x:</strong> Distancia</li>
+  </ul>
+
+  <p><strong>Ejemplo completo:</strong></p>
+  <p>Un motorista circula a 50 km/h (≈13.89 m/s) y frena hasta detenerse en 6 segundos.</p>
+  <ul>
+    <li><strong>vi =</strong> 13.89 m/s</li>
+    <li><strong>vf =</strong> 0 m/s</li>
+    <li><strong>t =</strong> 6 s</li>
+  </ul>
+
+  <p><strong>a = (vf - vi) / t = (0 - 13.89) / 6 = -2.315 m/s²</strong></p>
+  <p>La aceleración es negativa porque el motorista está frenando.</p>
+
+  <p><strong>¿Qué velocidad tiene a los 3 segundos?</strong></p>
+  <p>vf = vi + a · t = 13.89 + (-2.315) · 3 = 13.89 - 6.945 = <strong>6.945 m/s</strong></p>
+  <p>Después de 3 segundos, el motorista va a 6.945 m/s.</p>
+`,
+      ohm: `
+  <h2>ley de ohm</h2>
+  <p>La Ley de Ohm establece la relación entre tres magnitudes físicas fundamentales en electricidad: voltaje (V), corriente (I) y resistencia (R).</p>
+  <p>La corriente que fluye a través de un conductor es directamente proporcional al voltaje aplicado e inversamente proporcional a la resistencia del conductor.</p>
+  <p><strong>Fórmula principal:</strong> V = I · R</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fórmula</th>
+        <th>¿Qué calcula?</th>
+        <th>Unidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>V = I · R</td>
+        <td>Voltaje</td>
+        <td>Voltios (V)</td>
+      </tr>
+      <tr>
+        <td>I = V / R</td>
+        <td>Corriente</td>
+        <td>Amperios (A)</td>
+      </tr>
+      <tr>
+        <td>R = V / I</td>
+        <td>Resistencia</td>
+        <td>Ohmios (Ω)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Variables:</strong></p>
+  <ul>
+    <li><strong>V:</strong> Voltaje → diferencia de potencial eléctrico entre dos puntos</li>
+    <li><strong>I:</strong> Corriente → flujo de carga eléctrica</li>
+    <li><strong>R:</strong> Resistencia → oposición al paso de corriente</li>
+  </ul>
+
+  <p><strong>Importancia:</strong></p>
+  <ul>
+    <li>Permite analizar y diseñar circuitos eléctricos</li>
+    <li>Ayuda a seleccionar componentes adecuados</li>
+    <li>Facilita el cálculo de consumo y eficiencia</li>
+  </ul>
+
+  <p><strong>Ejemplo práctico:</strong></p>
+  <p>Si tenemos una resistencia de 10 Ω y aplicamos un voltaje de 100 V:</p>
+  <p><strong>I = V / R →</strong> I = 100 / 10 = <strong>10 A</strong></p>
+
+  <p><strong>Resumen:</strong> La Ley de Ohm es una herramienta esencial para comprender y trabajar con circuitos eléctricos, permitiendo calcular la relación entre voltaje, corriente y resistencia.</p>
+`,
+      newton: `
+  <h2>leyes de newton</h2>
+  <p>Las leyes de Newton son tres principios fundamentales que explican el movimiento de los cuerpos:</p>
+  <ul>
+    <li><strong>1ª Ley (Inercia):</strong> Un cuerpo permanece en reposo o movimiento uniforme si no hay fuerza neta.</li>
+    <li><strong>2ª Ley:</strong> F = m · a → la fuerza es proporcional a la masa y la aceleración.</li>
+    <li><strong>3ª Ley:</strong> Acción y reacción: toda fuerza tiene una opuesta de igual magnitud y dirección contraria.</li>
+  </ul>
+
+  <p><strong>Aplicaciones:</strong></p>
+  <ul>
+    <li>Diseño de estructuras</li>
+    <li>Simulación de movimientos</li>
+    <li>Estudio de fuerzas en sistemas físicos</li>
+  </ul>
+
+  <p><strong>Ejemplo:</strong> Si un objeto de 5 kg se acelera a 2 m/s², la fuerza aplicada es F = 5 × 2 = <strong>10 N</strong></p>
+
+  <div style="margin-top:30px; box-shadow: 0 0 12px #ff7675; border-radius: 12px; overflow: hidden;">
+    <iframe width="100%" height="400" src="https://www.youtube.com/embed/yjyStvnHWXg" 
+    title="Leyes de Newton explicadas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+  </div>
+`
+    };
+
+    let temaActual = null;
+
+    function mostrarTexto(tema) {
+      const contenedor = document.getElementById("contenedor-texto");
+
+      if (temaActual === tema) {
+        contenedor.style.display = "none";
+        contenedor.innerHTML = "";
+
+        temaActual = null;
+      } else {
+        contenedor.innerHTML = textos[tema];
+        contenedor.style.display = "block";
+        contenedor.scrollIntoView({ behavior: "smooth" });
+        temaActual = tema;
+      }
+    }
+  </script>
+</body>
+</html>

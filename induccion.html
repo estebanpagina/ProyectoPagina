@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>inducción – sena cimm</title>
+  <style>
+    @font-face {
+      font-family: 'spritegraffiti';
+      src: url('spritegraffiti.otf') format('opentype');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: arial, sans-serif;
+      background-color: #000;
+      color: #e0e0e0;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    #video-fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #f39c12;
+      font-family: 'spritegraffiti', cursive;
+      margin: 60px 0 30px;
+      text-transform: uppercase;
+    }
+
+    .imagen-induccion {
+      margin-bottom: 30px;
+    }
+
+    .imagen-induccion img {
+      width: 160px;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .imagen-induccion img:hover {
+      transform: scale(1.1);
+    }
+
+    .cuadro-induccion {
+      display: none;
+      max-width: 880px;
+      margin: 0 auto 40px;
+      background-color: #1c2833;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+      text-align: left;
+      animation: aparecer 0.5s ease-in-out;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .cuadro-induccion h2 {
+      color: #00b894;
+      font-size: 26px;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+
+    .cuadro-induccion p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: #e0e0e0;
+    }
+
+    .volver {
+      display: inline-block;
+      margin: 40px auto;
+      padding: 14px 28px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
+      background-color: #00b894;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .volver:hover {
+      background-color: #2e86ab;
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="video-fondo">
+    <source src="videofondopag2.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <h1>inducción sena cimm</h1>
+
+  <div class="imagen-induccion">
+    <img src="logosena.png" alt="Logo SENA" onclick="mostrarTexto('induccion')">
+  </div>
+
+  <div class="imagen-induccion">
+    <img src="fpisena.png" alt="Formación Profesional Integral" onclick="mostrarTexto('fpi')">
+  </div>
+
+  <div class="imagen-induccion">
+    <img src="mpf.png" alt="Programa de Formación" onclick="mostrarTexto('programa')">
+  </div>
+
+  <div id="cuadro-induccion" class="cuadro-induccion"></div>
+
+  <a class="volver" href="index.html">← volver al inicio</a>
+
+  <script>
+    let cuadroVisible = null;
+
+    const textos = {
+      induccion: `
+        <h2>historia y propósito del centro industrial de mantenimiento y manufactura (cimm)</h2>
+        <p><strong>🔧 Quiénes somos:</strong><br>
+        Centro de formación profesional integral, enfocado en el sector industrial de Sogamoso y su región. Instalaciones modernas y equipadas que promueven un aprendizaje autónomo y real.</p>
+        <p><strong>🎯 Misión y compromiso:</strong><br>
+        Formar técnicos y tecnólogos para el sector industrial. Ofrecer programas pertinentes, desde formación titulada hasta complementaria, acceso virtual y especializaciones. Fortalecer la inserción laboral mediante convenios, etapa práctica, certificaciones y apoyo al emprendimiento.</p>
+        <p><strong>🌟 Vida y cultura institucional:</strong><br>
+        Eventos vibrantes de bienestar: danzas, música, shows de administrativos y orquestas de aprendices. Propósitos de integración y alegría colectiva, con reconocimiento a los aprendices como el corazón de la institución.</p>
+        <p><strong>🤝 Redes y alianzas:</strong><br>
+        Articulación con otras sedes SENA (como el Centro de Tecnologías del Transporte) para fortalecer áreas afines: mantenimiento vehicular, transporte, entre otros. Participación activa en iniciativas nacionales: Sennova, brigada de emergencia, licencias SST, Jóvenes en Acción, competencias laborales, etc.</p>
+      `,
+      fpi: `
+  <h2>¿qué es la formación profesional integral (fpi)?</h2>
+  <p>La Formación Profesional Integral (FPI) es el modelo educativo del SENA que busca no solo preparar a los aprendices en competencias técnicas, sino también en valores humanos, sociales y ciudadanos.</p>
+  <p>La FPI integra tres dimensiones clave del ser humano: el ser, el saber y el hacer, para formar personas competentes, éticas y comprometidas con el desarrollo productivo y social del país. Este enfoque impulsa un aprendizaje completo, donde el conocimiento, la acción y la identidad se fortalecen en armonía.</p>
+
+  <table style="width:100%; border-collapse: collapse; margin-top: 20px; box-shadow: 0 0 12px #00b894;">
+    <thead>
+      <tr style="background-color:#00b894; color:#fff;">
+        <th style="padding:12px; border:1px solid #00b894;">COMPONENTE</th>
+        <th style="padding:12px; border:1px solid #00b894;">¿QUÉ SIGNIFICA?</th>
+        <th style="padding:12px; border:1px solid #00b894;">¿QUÉ DESARROLLA?</th>
+        <th style="padding:12px; border:1px solid #00b894;">PROPÓSITO CLAVE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px; border:1px solid #00b894;"><strong>SER</strong></td>
+        <td style="padding:12px; border:1px solid #00b894;">Existir, convivir con valores y mostrar nuestra autenticidad.</td>
+        <td style="padding:12px; border:1px solid #00b894;">Ética, identidad, empatía, responsabilidad, dignidad, solidaridad.</td>
+        <td style="padding:12px; border:1px solid #00b894;">Formar personas íntegras con conciencia social y emocional.</td>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid #00b894;"><strong>HACER</strong></td>
+        <td style="padding:12px; border:1px solid #00b894;">Actuar, construir, ejecutar, aplicar lo aprendido.</td>
+        <td style="padding:12px; border:1px solid #00b894;">Habilidades técnicas, creatividad, iniciativa, capacidad de transformación.</td>
+        <td style="padding:12px; border:1px solid #00b894;">Lograr una participación productiva, eficiente y práctica en el entorno laboral.</td>
+      </tr>
+      <tr>
+        <td style="padding:12px; border:1px solid #00b894;"><strong>SABER</strong></td>
+        <td style="padding:12px; border:1px solid #00b894;">Conocer, comprender, reflexionar y aprender de manera continua.</td>
+        <td style="padding:12px; border:1px solid #00b894;">Conocimiento, pensamiento crítico, aprendizaje autónomo y permanente.</td>
+        <td style="padding:12px; border:1px solid #00b894;">Tomar decisiones acertadas, innovar y adaptarse a los cambios.</td>
+      </tr>
+    </tbody>
+  </table>
+`,
+      programa: `
+        <h2>🧠 mi programa de formación – sena</h2>
+        <p><strong>📌 Nombre del programa:</strong><br>
+        Tecnólogo en Implementación de Infraestructura de las TIC</p>
+        <p><strong>🏷️ Nivel:</strong><br>
+        Tecnólogo<br>
+        Certificación: Tecnólogo en TIC</p>
+        <p><strong>⏳ Duración total:</strong><br>
+        27 meses → 3984 horas<br>
+        Lectiva: 21 meses (3080 h)<br>
+        Productiva: 6 meses (880 h)</p>
+        <p><strong>🧩 Etapas del proceso:</strong><br>
+        Lectiva: Aprendes teoría + práctica en ambientes reales y virtuales.<br>
+        Productiva: Aplicación del conocimiento en empresas o proyectos reales.</p>
+        <p><strong>💼 Competencias:</strong><br>
+        Básicas: Matemáticas, lectura, escritura.<br>
+        Claves: Pensamiento crítico, aprendizaje autónomo.<br>
+        Transversales: Trabajo en equipo, liderazgo.<br>
+        Laborales: Instalación, mantenimiento y gestión de redes TIC.</p>
+        <p><strong>🎯 Perfil del egresado:</strong><br>
+        Estás capacitado para trabajar o liderar proyectos en empresas del sector TIC o crear tu propia empresa en instalación y soporte de infraestructura tecnológica.</p>
+      `
+    };
+
+    function mostrarTexto(seccion) {
+      const cuadro = document.getElementById("cuadro-induccion");
+
+      if (cuadroVisible === seccion) {
+        cuadro.style.display = "none";
+        cuadro.innerHTML = "";
+        cuadroVisible = null;
+      } else {
+        cuadro.innerHTML = textos[seccion];
+        cuadro.style.display = "block";
+        cuadro.scrollIntoView({ behavior: "smooth" });
+        cuadroVisible = seccion;
+      }
+    }
+  </script>
+</body>
+</html>
